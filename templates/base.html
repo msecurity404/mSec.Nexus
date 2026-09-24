@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}mSec.Nexus — 2026{% endblock %}</title>
+<link rel="stylesheet" href="/static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head><body>
+<canvas id="matrix"></canvas>
+<div class="wrap">
+<nav>
+<div class="logo">mSec<span>.Nexus</span></div>
+<ul>
+<li><a href="/">🏠 الرئيسية</a></li>
+<li><a href="/hub">🎛️ Hub</a></li>
+<li><a href="/courses">🎓 الكورسات</a></li>
+<li><a href="/instructors">👨‍🏫 المدربين</a></li>
+<li><a href="/blog">📰 المدونة</a></li>
+<li><a href="/about">ℹ️ من نحن</a></li>
+<li><a href="/contact">📞 تواصل</a></li>
+{% if session.user %}
+<li><a href="/notifications">🔔{% if notif_count > 0 %}<span class="notif-badge">{{ notif_count }}</span>{% endif %}</a></li>
+<li><a href="/dashboard">{{ session.avatar }} {{ session.user }}</a></li>
+{% if session.role == 'admin' %}<li><a href="/admin" style="color:var(--red)">👑 Admin</a></li>{% endif %}
+<li><a href="/logout" class="nav-danger">خروج</a></li>
+{% else %}
+<li><a href="/login" class="btn-outline">دخول</a></li>
+<li><a href="/register" class="nav-btn">تسجيل</a></li>
+{% endif %}
+</ul>
+</nav>
+<div id="toast-container"></div>
+<div class="container">{% block content %}{% endblock %}</div>
+<footer>
+<div class="logo" style="justify-content:center">mSec<span>.Nexus</span></div>
+<p style="margin-top:10px">معاً نحو فضاء سيراني أكثر أماناً 🛡️</p>
+<p style="margin-top:15px;font-size:12px">© 2026 mSec.Nexus — Cyber Security Platform v2.0</p>
+</footer>
+</div>
+<script src="/static/js/main.js"></script>
+</body></html>

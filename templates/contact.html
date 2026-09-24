@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% block content %}
+<h1>📞 تواصل معنا</h1>
+<div class="grid" style="grid-template-columns:1fr 1fr">
+<div class="card">
+<h3>أرسل رسالة</h3>
+{% if sent %}<div class="alert">✅ تم إرسال رسالتك</div>{% endif %}
+<form method="POST">
+<label>الاسم</label><input name="name" required>
+<label>البريد</label><input name="email" type="email" required>
+<label>الموضوع</label><input name="subject" required>
+<label>الرسالة</label><textarea name="body" rows="5" required></textarea>
+<button type="submit" class="btn-block">إرسال</button></form></div>
+<div class="card"><h3>معلومات التواصل</h3>
+<p>📧 info@msec.nexus</p><p>📱 +1234567890</p><p>🌍 متاحون 24/7</p>
+<p style="margin-top:20px;color:var(--muted)">نرد خلال 24 ساعة</p></div>
+</div>
+{% endblock %}

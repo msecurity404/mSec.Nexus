@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% block content %}
+<div class="auth-box">
+<h2>🔐 تسجيل الدخول</h2>
+<form method="POST">
+<label>اسم المستخدم</label><input name="username" placeholder="admin" required>
+<label>كلمة المرور</label><input name="password" type="password" required>
+<button type="submit" class="btn-block" style="margin-top:10px">دخول</button>
+</form>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+<p style="text-align:center;margin-top:20px;color:var(--muted)">ما عندك حساب؟ <a href="/register" style="color:var(--neon)">سجّل</a></p>
+</div>
+{% endblock %}

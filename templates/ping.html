@@ -1,0 +1,5 @@
+{% extends 'base.html' %}{% block content %}
+<h1>⚡ أداة فحص الشبكة</h1>
+<form method="POST"><input name="ip" placeholder="127.0.0.1"><button type="submit">تنفيذ</button></form>
+{% if output %}<pre>{{ output }}</pre>{% endif %}
+{% endblock %}

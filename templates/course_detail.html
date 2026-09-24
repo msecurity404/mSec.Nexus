@@ -1,0 +1,18 @@
+{% extends 'base.html' %}{% block content %}
+<a href="/courses" style="color:var(--muted);text-decoration:none">← رجوع</a>
+<div class="card" style="margin-top:20px">
+<div style="font-size:100px;text-align:center">{{ c[9] }}</div>
+<h1>{{ c[1] }}</h1>
+<div class="meta" style="margin:15px 0"><span class="badge">{{ c[4] }}</span><span class="badge">{{ c[5] }}</span><span>⭐ {{ c[11] }}</span><span>👥 {{ c[10] }}</span><span>⏱ {{ c[7] }}س</span></div>
+<p style="font-size:17px;margin:20px 0">{{ c[3] }}</p>
+<div class="price" style="font-size:36px">${{ c[6] }}</div>
+<button style="margin-top:15px">🎓 اشترك الآن</button></div>
+<h2 style="margin-top:40px">📚 محتوى الكورس</h2>
+{% for l in lessons %}
+<div class="card" style="padding:15px"><b>{{ l[2] }}</b> <span style="float:left;color:var(--muted)">{{ l[3] }}</span></div>
+{% endfor %}
+{% if inst %}
+<h2 style="margin-top:40px">👨‍🏫 المدرب</h2>
+<div class="card"><span class="icon">{{ inst[4] }}</span><h3>{{ inst[1] }}</h3><p>{{ inst[3] }}</p></div>
+{% endif %}
+{% endblock %}

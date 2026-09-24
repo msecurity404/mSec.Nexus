@@ -1,0 +1,18 @@
+{% extends 'base.html' %}{% block content %}
+<h1 style="text-align:center">🎛️ Command Center</h1>
+<p style="text-align:center;color:var(--muted);margin-bottom:40px">لوحة التحكم المركزية — كل شي بمكان واحد</p>
+<div class="hub-grid">
+<a href="/dashboard" class="hub-tile"><span class="hub-icon">👤</span><h3>ملفي</h3><p>بياناتي وإعداداتي</p></a>
+<a href="/courses" class="hub-tile"><span class="hub-icon">🎓</span><h3>الكورسات</h3><p>تصفّح واشترك</p></a>
+<a href="/instructors" class="hub-tile"><span class="hub-icon">👨‍🏫</span><h3>المدربين</h3><p>فريقنا</p></a>
+<a href="/blog" class="hub-tile"><span class="hub-icon">📰</span><h3>المدونة</h3><p>مقالات وأخبار</p></a>
+<a href="/search" class="hub-tile"><span class="hub-icon">🔍</span><h3>البحث</h3><p>ابحث عن كورس</p></a>
+<a href="/notifications" class="hub-tile"><span class="hub-icon">🔔</span><h3>الإشعارات</h3><p>آخر التحديثات</p></a>
+<a href="/contact" class="hub-tile"><span class="hub-icon">📞</span><h3>تواصل</h3><p>نحن هنا</p></a>
+<a href="/about" class="hub-tile"><span class="hub-icon">ℹ️</span><h3>من نحن</h3><p>قصتنا</p></a>
+<a href="/tools/ping" class="hub-tile"><span class="hub-icon">⚡</span><h3>أدوات</h3><p>فحص الشبكة</p></a>
+{% if session.role == 'admin' %}
+<a href="/admin" class="hub-tile" style="border-color:var(--red)"><span class="hub-icon">👑</span><h3 style="color:var(--red)">الإدارة</h3><p>تحكم كامل</p></a>
+{% endif %}
+</div>
+{% endblock %}

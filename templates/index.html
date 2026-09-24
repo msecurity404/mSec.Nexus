@@ -1,0 +1,32 @@
+{% extends 'base.html' %}{% block content %}
+<div class="hero">
+<span class="year-badge">🚀 إصدار 2026</span>
+<h1>mSec.Nexus</h1>
+<p>منصة الأمن السيبراني العربية الأولى — تعلّم، احترف، واحمِ الفضاء الرقمي بأحدث التقنيات</p>
+<a href="/courses" class="btn">🎓 ابدأ التعلم</a>
+<a href="/hub" class="btn btn-outline" style="margin-right:10px">🎛️ لوحة التحكم</a>
+</div>
+<div class="stats">
+<div class="stat"><span class="num">12,840</span><span class="lbl">طالب مسجّل</span></div>
+<div class="stat"><span class="num">48</span><span class="lbl">كورس احترافي</span></div>
+<div class="stat"><span class="num">24</span><span class="lbl">مدرب خبير</span></div>
+<div class="stat"><span class="num">99.2%</span><span class="lbl">رضا الطلاب</span></div>
+</div>
+<div class="section-title"><h2>🎓 الكورسات المميزة</h2></div>
+<div class="grid">
+{% for c in courses %}
+<div class="card"><span class="icon">{{ c[9] }}</span><h3>{{ c[1] }}</h3>
+<p style="color:var(--muted);font-size:14px">{{ c[3][:110] }}...</p>
+<div class="meta"><span>⭐ {{ c[11] }}</span><span>👥 {{ c[10] }}</span><span>⏱ {{ c[7] }}س</span></div>
+<div class="price">${{ c[6] }}</div>
+<a href="/course/{{ c[0] }}" class="btn btn-block">التفاصيل</a></div>
+{% endfor %}</div>
+<div class="section-title" style="margin-top:80px"><h2>📰 آخر المقالات</h2></div>
+<div class="grid">
+{% for a in articles %}
+<div class="card"><span class="badge">{{ a[5] }}</span><h3 style="margin-top:15px">{{ a[1] }}</h3>
+<p style="color:var(--muted);font-size:14px">{{ a[3][:130] }}...</p>
+<div class="meta"><span>✍️ {{ a[4] }}</span><span>👁 {{ a[7] }}</span></div>
+<a href="/blog/{{ a[0] }}" class="btn btn-outline btn-block">اقرأ</a></div>
+{% endfor %}</div>
+{% endblock %}

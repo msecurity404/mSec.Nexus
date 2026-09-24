@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block content %}
+<h1>🔔 الإشعارات</h1>
+{% for n in notifications %}
+<div class="card"><h3>{{ n[2] }}</h3><p>{{ n[3] }}</p><small style="color:var(--muted)">{{ n[4] }}</small></div>
+{% else %}<div class="card"><p>لا توجد إشعارات</p></div>{% endfor %}
+{% endblock %}

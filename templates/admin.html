@@ -1,0 +1,15 @@
+{% extends 'base.html' %}{% block content %}
+<h1>👑 لوحة الإدارة</h1>
+<div class="stats">
+<div class="stat"><span class="num">{{ stats.users }}</span><span class="lbl">مستخدمين</span></div>
+<div class="stat"><span class="num">{{ stats.courses }}</span><span class="lbl">كورسات</span></div>
+<div class="stat"><span class="num">{{ stats.articles }}</span><span class="lbl">مقالات</span></div>
+<div class="stat"><span class="num">{{ stats.messages }}</span><span class="lbl">رسائل</span></div>
+</div>
+<h2>👥 المستخدمين</h2>
+<table><tr><th>ID</th><th>Avatar</th><th>Username</th><th>Email</th><th>Role</th><th>Balance</th></tr>
+{% for u in users %}<tr><td>{{ u[0] }}</td><td>{{ u[6] }}</td><td>{{ u[1] }}</td><td>{{ u[2] }}</td><td><span class="badge badge-{{ u[5] }}">{{ u[5] }}</span></td><td>${{ u[8] }}</td></tr>{% endfor %}
+</table>
+<h2 style="margin-top:40px">📩 الرسائل</h2>
+{% for m in msgs %}<div class="card"><p><b>{{ m[1] }}</b> ({{ m[2] }})</p><p><b>{{ m[3] }}</b></p><p>{{ m[4] }}</p></div>{% else %}<div class="card"><p>لا توجد</p></div>{% endfor %}
+{% endblock %}

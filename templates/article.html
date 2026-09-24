@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% block content %}
+<a href="/blog" style="color:var(--muted);text-decoration:none">← رجوع</a>
+<div class="card" style="margin-top:20px">
+<span class="badge">{{ a[5] }}</span>
+<h1 style="margin-top:15px">{{ a[1] }}</h1>
+<p style="color:var(--muted)">✍️ {{ a[4] }} • 📅 {{ a[6] }} • 👁 {{ a[7] }}</p>
+<hr>
+<p style="font-size:17px;line-height:2">{{ a[3] }}</p></div>
+<h2 style="margin-top:40px">💬 التعليقات ({{ comments|length }})</h2>
+<form method="POST" action="/blog/{{ a[0] }}/comment">
+<textarea name="content" placeholder="اكتب تعليقك..." required></textarea>
+<button type="submit">نشر</button></form>
+{% for c in comments %}
+<div class="card" style="padding:15px"><p><b>{{ c[2] }}</b> <small style="color:var(--muted)">{{ c[4] }}</small></p><p>{{ c[3] }}</p></div>
+{% endfor %}
+{% endblock %}

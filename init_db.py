@@ -1,0 +1,29 @@
+import sqlite3, os
+if os.path.exists('msec.db'): os.remove('msec.db')
+conn = sqlite3.connect('msec.db'); c = conn.cursor()
+c.execute("CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT, password TEXT, fullname TEXT, role TEXT DEFAULT 'student', avatar TEXT DEFAULT '👤', bio TEXT, balance REAL DEFAULT 0, created TEXT)")
+c.execute("CREATE TABLE instructors (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, title TEXT, bio TEXT, avatar TEXT, expertise TEXT, courses INTEGER, rating REAL)")
+c.execute("CREATE TABLE courses (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, slug TEXT, description TEXT, category TEXT, level TEXT, price REAL, hours INTEGER, instructor_id INTEGER, image TEXT, students INTEGER DEFAULT 0, rating REAL DEFAULT 4.5)")
+c.execute("CREATE TABLE lessons (id INTEGER PRIMARY KEY AUTOINCREMENT, course_id INTEGER, title TEXT, duration TEXT, ord INTEGER, free INTEGER DEFAULT 0)")
+c.execute("CREATE TABLE enrollments (id INTEGER PRIMARY KEY AUTOINCREMENT, user_id INTEGER, course_id INTEGER, progress INTEGER DEFAULT 0, date TEXT)")
+c.execute("CREATE TABLE articles (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, slug TEXT, content TEXT, author TEXT, category TEXT, date TEXT, views INTEGER DEFAULT 0)")
+c.execute("CREATE TABLE comments (id INTEGER PRIMARY KEY AUTOINCREMENT, article_id INTEGER, user TEXT, content TEXT, date TEXT)")
+c.execute("CREATE TABLE messages (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, email TEXT, subject TEXT, body TEXT, date TEXT, read INTEGER DEFAULT 0)")
+c.execute("CREATE TABLE notifications (id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT, title TEXT, body TEXT, date TEXT, read INTEGER DEFAULT 0)")
+users = [('admin','admin@msec.nexus','admin123','Malek Al-Astal','admin','👑','مؤسس mSec.Nexus',999999,'2026-01-01'),('ahmed','ahmed@msec.nexus','ahmed2026','Ahmed Al-Sayed','instructor','👨‍💻','خبير اختبار اختراق',15000,'2026-01-05'),('sara','sara@msec.nexus','sara2026','Sara Khaled','student','👩‍💻','طالبة أمن سيبراني',2500,'2026-02-01'),('omar','omar@msec.nexus','omar2026','Omar Hassan','student','🧑‍💻','مهندس شبكات',3200,'2026-02-15'),('lina','lina@msec.nexus','lina2026','Lina Yousef','instructor','👩‍🔬','محللة أمن',8500,'2026-01-10'),('khaled','khaled@msec.nexus','khaled2026','Khaled Nabil','instructor','🧑‍💻','مهندس شبكات',5500,'2026-01-20')]
+c.executemany("INSERT INTO users (username,email,password,fullname,role,avatar,bio,balance,created) VALUES (?,?,?,?,?,?,?,?,?)", users)
+instructors = [('Ahmed Al-Sayed','خبير اختبار اختراق','10+ سنوات + OSCP + OSWE','👨‍💻','Penetration Testing, Red Team',12,4.9),('Lina Yousef','محللة أمن سيبراني','متخصصة في التحليل الجنائي الرقمي','👩‍🔬','Forensics, Malware Analysis',8,4.8),('Khaled Nabil','مهندس أمن شبكات','خبير أمن الشبكات والبنية التحتية','🧑‍💻','Network Security, Firewalls',15,4.7)]
+c.executemany("INSERT INTO instructors (name,title,bio,avatar,expertise,courses,rating) VALUES (?,?,?,?,?,?,?)", instructors)
+courses = [('اختبار الاختراق من الصفر','pentest-zero','دورة شاملة من الأساسيات حتى الاحتراف في اختبار الاختراق الأخلاقي','Offensive','مبتدئ',299,45,1,'🛡️',1240,4.9),('تحليل البرمجيات الخبيثة','malware-analysis','تعلم تحليل الفيروسات وبرامج الفدية','Forensics','متقدم',499,60,2,'🦠',680,4.8),('أمن الشبكات','network-security','حماية الشبكات وتصميم بنية آمنة','Defensive','متوسط',349,50,3,'🌐',920,4.7),('OWASP Top 10','owasp-top10','أخطر 10 ثغرات ويب وكيف تحميها','Web Security','مبتدئ',199,30,1,'💉',2100,4.9),('الهندسة العكسية','reverse-engineering','تحليل الملفات التنفيذية','Advanced','متقدم',599,80,2,'🔬',420,4.9),('التشفير وعلم التعمية','cryptography','من التشفير الكلاسيكي حتى الحديث','Crypto','متوسط',279,35,3,'🔐',750,4.6),('Red Team Operations','red-team','عمليات الفريق الأحمر المتقدمة','Offensive','متقدم',699,70,1,'🎯',380,5.0),('Blue Team Defense','blue-team','دفاع الفريق الأزرق والاستجابة للحوادث','Defensive','متوسط',449,55,3,'🛡️',560,4.8)]
+c.executemany("INSERT INTO courses (title,slug,description,category,level,price,hours,instructor_id,image,students,rating) VALUES (?,?,?,?,?,?,?,?,?,?,?)", courses)
+for cid in range(1,9):
+    for i in range(1,6):
+        c.execute("INSERT INTO lessons (course_id,title,duration,ord,free) VALUES (?,?,?,?,?)",(cid, f'الدرس {i}: مقدمة', f'{20+i*5} دقيقة', i, 1 if i==1 else 0))
+articles = [('أخطر 5 ثغرات في 2026','top-5-vulns-2026','شهد عام 2026 ظهور ثغرات خطيرة جداً استهدفت البنية التحتية العالمية، من بينها ثغرات في أنظمة الذكاء الاصطناعي...','Ahmed Al-Sayed','Threat Intel','2026-03-01',5420),('كيف تبدأ في الأمن السيبراني 2026؟','start-cybersec-2026','دليل شامل للمبتدئين للدخول لمجال الأمن السيبراني بخطوات عملية محدثة لعام 2026...','Lina Yousef','Career','2026-02-15',8930),('حماية كلمات المرور الحديثة','password-security-2026','استراتيجيات 2026 لحماية كلمات المرور ضد هجمات الذكاء الاصطناعي...','Khaled Nabil','Best Practices','2026-03-10',3240),('هجمات Ransomware الذكية','ransomware-2026','كيف تستخدم هجمات الفدية الذكاء الاصطناعي في 2026...','Ahmed Al-Sayed','Threats','2026-03-20',6710),('مستقبل AI في الأمن السيبراني','ai-cybersec-2026','الذكاء الاصطناعي يغير قواعد اللعبة في الأمن السيبراني...','Lina Yousef','AI Security','2026-03-25',9200)]
+c.executemany("INSERT INTO articles (title,slug,content,author,category,date,views) VALUES (?,?,?,?,?,?,?)", articles)
+comments = [(1,'sara','مقال رائع، استفدت كثيراً! 🔥','2026-03-02'),(1,'omar','معلومات قيمة جداً','2026-03-03'),(2,'lina','شكراً على الدليل المحدث','2026-02-16'),(5,'ahmed','AI فعلاً يغير كل شي','2026-03-26')]
+c.executemany("INSERT INTO comments (article_id,user,content,date) VALUES (?,?,?,?)", comments)
+notifications = [('admin','مرحباً بك في mSec.Nexus 👑','تم تسجيل دخولك كمدير النظام','2026-03-26',0),('admin','تحديث v2.0','تم إطلاق النسخة الجديدة','2026-03-25',0)]
+c.executemany("INSERT INTO notifications (user,title,body,date,read) VALUES (?,?,?,?,?)", notifications)
+conn.commit(); conn.close()
+print("DB Ready - 2026")

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% block content %}
+<h1>👨‍🏫 فريق المدربين</h1>
+<div class="grid">
+{% for i in instructors %}
+<div class="card"><span class="icon">{{ i[4] }}</span><h3>{{ i[1] }}</h3>
+<p style="color:var(--neon)">{{ i[2] }}</p>
+<p style="color:var(--muted);margin:15px 0">{{ i[3] }}</p>
+<p class="tag">{{ i[5] }}</p>
+<div class="meta" style="margin-top:15px"><span>🎓 {{ i[6] }} كورس</span><span>⭐ {{ i[7] }}</span></div>
+</div>
+{% endfor %}</div>
+{% endblock %}

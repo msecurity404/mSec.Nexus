@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block content %}
+<h1>🔍 البحث</h1>
+<form method="GET"><input name="q" value="{{ q }}" placeholder="ابحث..."><button type="submit" class="btn-block">بحث</button></form>
+{% if q %}<p style="margin:20px 0">نتائج البحث عن: <b>{{ q|safe }}</b></p>{% endif %}
+<div class="grid">
+{% for r in results %}
+<div class="card"><span class="icon">{{ r[9] }}</span><h3>{{ r[1] }}</h3><p class="price">${{ r[6] }}</p>
+<a href="/course/{{ r[0] }}" class="btn btn-block">عرض</a></div>
+{% endfor %}</div>
+{% endblock %}

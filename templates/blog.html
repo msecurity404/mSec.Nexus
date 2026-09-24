@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block content %}
+<h1>📰 المدونة</h1>
+<div class="grid">
+{% for a in articles %}
+<div class="card"><span class="badge">{{ a[5] }}</span><h3 style="margin-top:15px">{{ a[1] }}</h3>
+<p style="color:var(--muted);font-size:14px">{{ a[3][:150] }}...</p>
+<div class="meta"><span>✍️ {{ a[4] }}</span><span>📅 {{ a[6] }}</span><span>👁 {{ a[7] }}</span></div>
+<a href="/blog/{{ a[0] }}" class="btn btn-block">اقرأ</a></div>
+{% endfor %}</div>
+{% endblock %}

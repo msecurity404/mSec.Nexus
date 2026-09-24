@@ -1,0 +1,20 @@
+{% extends 'base.html' %}{% block content %}
+<h1>👋 مرحباً {{ u[4] }}</h1>
+<div class="grid" style="grid-template-columns:2fr 1fr">
+<div class="card"><h3>{{ u[6] }} معلوماتي</h3>
+<p><b>اسم المستخدم:</b> {{ u[1] }}</p>
+<p><b>البريد:</b> {{ u[2] }}</p>
+<p><b>الدور:</b> <span class="badge badge-{{ u[5] }}">{{ u[5] }}</span></p>
+<p><b>الرصيد:</b> <span class="success">${{ u[8] }}</span></p>
+<p><b>نبذة:</b> {{ u[7] }}</p></div>
+<div class="card"><h3>📊 إحصائياتي</h3>
+<p>الكورسات: <span class="badge">{{ enrollments|length }}</span></p>
+<p>الرصيد: <span class="success">${{ u[8] }}</span></p>
+<p>العضوية: <span class="badge">{{ u[9] }}</span></p></div>
+</div>
+<h2 style="margin-top:40px">🎓 كورساتي</h2>
+<div class="grid">
+{% for e in enrollments %}<div class="card"><span class="icon">{{ e[5] }}</span><h3>{{ e[4] }}</h3><p>التقدم: {{ e[3] }}%</p></div>
+{% else %}<div class="card"><p>ما عندك كورسات بعد</p><a href="/courses" class="btn" style="margin-top:10px">تصفح</a></div>{% endfor %}
+</div>
+{% endblock %}
