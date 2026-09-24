@@ -4,12 +4,11 @@ Cyber Integration Hub — 2026 Edition
 
 «مركز التكامل السيبراني — بيئة عربية عملية لتعلّم الأمن السيبراني»
 
-""Python" (https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)" (#)
-""Flask" (https://img.shields.io/badge/Flask-3.x-000000?logo=flask&logoColor=white)" (#)
-""SQLite" (https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white)" (#)
-""License" (https://img.shields.io/badge/License-MIT-green.svg)" (#license)
-""Status" (https://img.shields.io/badge/Status-Educational-orange)" (#)
-
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-3.x-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![SQLite](https://img.shields.io/badge/Database-SQLite-003B57?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Educational-orange)](#security-notice)
 ---
 
 📌 ما هو mSec.Nexus؟
