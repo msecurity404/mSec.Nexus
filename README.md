@@ -50,11 +50,15 @@ Jinja2
 HTML5
 CSS3
 JavaScript
+```
 🚀 التشغيل
 Kali Linux
+```
 sudo apt update
 sudo apt install python3 python3-pip git -y
+```
 Termux
+```
 pkg update
 pkg install python git -y
 تحميل وتشغيل المشروع
@@ -63,8 +67,12 @@ cd mSec.Nexus
 pip install -r requirements.txt
 python init_db.py
 python app.py
+```
 ثم افتح:
+```
 http://127.0.0.1:5000
+```
+```
 🔐 Demo Accounts
 Username
 Password
@@ -84,7 +92,9 @@ Student
 lina
 lina2026
 Instructor
+```
 ⚠️ هذه الحسابات مخصصة للتدريب المحلي فقط.
+```
 📁 Project Structure
 mSec.Nexus/
 ├── app.py
@@ -96,13 +106,17 @@ mSec.Nexus/
 ├── pages/
 └── docs/
 ⚠️ Security Notice
+```
 هذا المشروع تعليمي ويحتوي على ثغرات متعمدة.
 استخدمه فقط في:
+```
 Localhost
 Virtual Machine
+```
 بيئة Lab معزولة
 ❌ لا تقم بنشر النسخة الضعيفة على الإنترنت.
 ❌ لا تستخدمها ضد أنظمة لا تملك تصريحًا لاختبارها.
+
 👨‍💻 Developer
 Eng. Malek Al-Astal
 Cyber Security Engineer
